@@ -9,11 +9,6 @@ services:
     container_name: chat-ollama
     ports:
       - "11434:11434"
-    environment:
-      - OLLAMA_HOST=0.0.0.0
-      - OLLAMA_NUM_CTX=${OLLAMA_NUM_CTX:-4096}
-      - OLLAMA_NUM_GPU=${OLLAMA_NUM_GPU:-1}
-      - OLLAMA_NUM_THREAD=${OLLAMA_NUM_THREAD:-4}
     volumes:
       - ollama_data:/root/.ollama
     networks:
@@ -38,11 +33,6 @@ services:
       - "8000:8000"
     environment:
       - OLLAMA_URL=http://ollama:11434
-      - OLLAMA_NUM_CTX=${OLLAMA_NUM_CTX:-4096}
-      - OLLAMA_TEMPERATURE=${OLLAMA_TEMPERATURE:-0.7}
-      - OLLAMA_TOP_P=${OLLAMA_TOP_P:-0.9}
-      - OLLAMA_TOP_K=${OLLAMA_TOP_K:-40}
-      - OLLAMA_REPEAT_PENALTY=${OLLAMA_REPEAT_PENALTY:-1.1}
     env_file:
       - .env
     depends_on:
